@@ -5,6 +5,16 @@ public class OccuranceCount {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//Approach 1 :
+
+		String str = "somesh";
+		
+		Map<Character, Long> charOccurrences = str.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+
+		//Approach 2 :
 		
 		String str ="SomeshSfgsom";
 		
