@@ -9,9 +9,10 @@ public class OccuranceCount {
 
 		String str = "somesh";
 		
-		Map<Character, Long> charOccurrences = str.chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		Map<Character, Long> charOccurrences = 
+		                                  str.chars()
+                				   .mapToObj(c -> (char) c)
+              					  .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
 
 		//Approach 2 :
