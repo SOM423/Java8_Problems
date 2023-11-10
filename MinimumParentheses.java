@@ -1,7 +1,6 @@
 public class MinimumParentheses {
 	public static int minimumParentheses(String pattern) {
 
-		
 		int openCount = 0;
 		int closeCount = 0;
 
