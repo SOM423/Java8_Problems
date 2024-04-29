@@ -4,17 +4,19 @@ import java.util.stream.Collectors;
 
 public class RunLengthEncodingString {
 
-	public static void main(String[] args) {
+    public static String encode(String input) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
 
-		 String string = "AAABBBCDDDD";
-		 
-		 Pattern pattern = Pattern.compile("(\\p{L})\\1*");
-		 
-		 Matcher matcher = pattern.matcher(string);
-		 
-		 
-		 String result =matcher.results().map(match ->String.valueOf(match.group().charAt(0)) +match.group().length()).collect(Collectors.joining());
-		 System.out.println(result);
-	}
+        StringBuilder encodedString = new StringBuilder();
+
+        input.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(c -> c, LinkedHashMap::new, Collectors.counting()))
+                .forEach((c, count) -> encodedString.append(c).append(count));
+
+        return encodedString.toString();
+    }
 
 }
