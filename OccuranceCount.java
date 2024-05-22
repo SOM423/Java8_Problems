@@ -15,6 +15,10 @@ public class OccuranceCount {
               					  .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
 
+		
+		
+		
+		
 		//Approach 2 :
 		
 		String str ="SomeshSfgsom";
@@ -39,4 +43,31 @@ public class OccuranceCount {
 
 	}
 
+}
+
+//Approach 3 :
+
+class OccuranceCount {
+    public static void main(String[] args) {
+       
+       int[] arr = {4,5,2,4,2,5,7,6,2,3,4,5,1,2,4,5,4,4};
+       
+       Map<Integer, Long> occuranceCount = new HashMap<>();
+       
+       for (int i = 0; i < arr.length; i++) {
+           occuranceCount.put(arr[i], occuranceCount.getOrDefault(arr[i], 0L) + 1);
+       }
+       
+       // Find the entry with the maximum occurrence
+       Optional<Map.Entry<Integer, Long>> maxEntry = occuranceCount.entrySet()
+           .stream()
+           .max(Map.Entry.comparingByValue());
+       
+       if (maxEntry.isPresent()) {
+           System.out.println("Element with the highest occurrence: " + maxEntry.get().getKey() +
+                              ", Occurrences: " + maxEntry.get().getValue());
+       } else {
+           System.out.println("No elements found");
+       }
+    }
 }
